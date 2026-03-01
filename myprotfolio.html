@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <!-- charset meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- responsive meta -->
+    <title>My Portfolio Web</title> <!-- page title -->
+
+    <style> /* internal css */
+
+        *{
+            margin:0; /* reset margin */
+            padding:0; /* reset padding */
+            box-sizing:border-box; /* box sizing */
+            font-family: Arial, Helvetica, sans-serif; /* font family */
+        }
+
+        body{
+            line-height:1.7; /* line spacing */
+        }
+
+        .navbar{
+            display:flex; /* flex layout */
+            justify-content:space-between; /* space between */
+            align-items:center; /* center align */
+            padding:15px 30px; /* navbar padding */
+            background-color:#222; /* dark background */
+            color:white; /* text color */
+            position:relative; /* relative position */
+        }
+
+        .navlinks{
+            display:flex; /* links flex */
+            gap:20px; /* link gap */
+        }
+
+        .navlinks a{
+            color:white; /* link color */
+            text-decoration:none; /* remove underline */
+        }
+
+        .menu-toggle{
+            display:none; /* hidden toggle */
+            cursor:pointer; /* pointer cursor */
+            font-size:22px; /* toggle size */
+        }
+
+        .hero{
+            height:90vh; /* hero height */
+            display:flex; /* hero flex */
+            justify-content:center; /* center horizontal */
+            align-items:center; /* center vertical */
+            background:linear-gradient(to right,#4facfe,#00f2fe); /* gradient bg */
+            color:white; /* hero text */
+            text-align:center; /* text center */
+            flex-direction:column; /* column layout */
+        }
+
+        .hero h2{
+            font-size:3rem; /* heading size */
+        }
+
+        section{
+            padding:60px 40px; /* section padding */
+            text-align:center; /* center text */
+        }
+
+        .skill{
+            padding:20px; /* skill padding */
+            background:#f4f4f4; /* light background */
+            border-radius:10px; /* rounded corners */
+            transition:0.5s; /* smooth transition */
+            margin:10px; /* skill margin */
+            display:inline-block; /* inline block */
+        }
+
+        .skill:hover{
+            background:lightblue; /* hover background */
+            color:white; /* hover text */
+            transform:scale(1.1); /* hover scale */
+        }
+
+        form{
+            max-width:400px; /* form width */
+            margin:auto; /* center form */
+            display:flex; /* form flex */
+            flex-direction:column; /* column layout */
+            gap:15px; /* input gap */
+        }
+
+        input, textarea{
+            padding:10px; /* input padding */
+            border:1px solid #ccc; /* input border */
+        }
+
+        button{
+            padding:10px; /* button padding */
+            border:none; /* no border */
+            background:black; /* button bg */
+            color:white; /* button text */
+            cursor:pointer; /* pointer cursor */
+        }
+
+        button:hover{
+            background:#4facfe; /* hover bg */
+        }
+
+        @media (max-width:768px){ /* mobile media */
+
+            .navlinks{
+                display:none; /* hide links */
+                flex-direction:column; /* column links */
+                background:#333; /* mobile bg */
+                position:absolute; /* absolute position */
+                top:60px; /* top offset */
+                right:0; /* right align */
+                width:200px; /* menu width */
+                padding:20px; /* menu padding */
+            }
+
+            .navlinks.active{
+                display:flex; /* show menu */
+            }
+
+            .menu-toggle{
+                display:block; /* show toggle */
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar"> <!-- navbar start -->
+        <h1>MYPORTFOLIO</h1> <!-- site name -->
+        <div class="menu-toggle" id="menutoggle">😎</div> <!-- toggle icon -->
+
+        <div class="navlinks" id="navlinks"> <!-- nav container -->
+            <a href="#hero">Home</a> <!-- home link -->
+            <a href="#skills">Skills</a> <!-- skills link -->
+            <a href="#contact">Contact</a> <!-- contact link -->
+        </div>
+    </nav>
+
+    <section class="hero" id="hero"> <!-- hero section -->
+        <h2>Hello, I'm Shyam</h2> <!-- hero heading -->
+        <p>Pursuing Full-Stack Development</p> <!-- hero text -->
+        <button id="changetextbtn">Touch Me</button> <!-- hero button -->
+    </section>
+
+    <section id="skills"> <!-- skills section -->
+        <h2>My Skills:</h2> <!-- skills title -->
+        <div class="skill">HTML</div>
+        <div class="skill">CSS</div>
+        <div class="skill">Java & JavaScript</div>
+        <div class="skill">Python</div>
+        <div class="skill">C & C++</div>
+    </section>
+
+    <section id="contact"> <!-- contact section -->
+        <h2>Contact Me</h2>
+        <form id="contactform">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <textarea id="message" placeholder="Your Message" required></textarea>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+    <script> /* javascript start */
+
+        alert("Welcome to my portfolio..."); // welcome alert
+
+        const menutoggle = document.getElementById("menutoggle"); 
+        const navlinks = document.getElementById("navlinks");
+
+        menutoggle.addEventListener("click", function(){
+            navlinks.classList.toggle("active");
+        });
+
+        const changetextbtn = document.getElementById("changetextbtn");
+        const heroHeading = document.querySelector(".hero h2");
+
+        changetextbtn.addEventListener("click", function(){
+
+            if (heroHeading.textContent === "Hello, I'm Shyam") {
+                heroHeading.textContent = "Welcome to My Portfolio..";
+            } 
+            else {
+                heroHeading.textContent = "Hello, I'm Shyam";
+            }
+
+        });
+
+        const contactForm = document.getElementById("contactform");
+
+        contactForm.addEventListener("submit", function(event){
+            event.preventDefault();
+            alert("Message sent successfully!");
+            contactForm.reset();
+        });
+
+    </script>
+
+</body>
+</html>
